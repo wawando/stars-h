@@ -116,9 +116,6 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 #include(CPack)
 find_package(PkgConfig REQUIRED)
 
-# Set path to header files of STARS-H
-include_directories("${CMAKE_SOURCE_DIR}/include")
-
 
 ###############################################################################
 ##                     CHECK IF OPTIONS ARE SUPPORTED                        ##

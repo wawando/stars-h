@@ -20,6 +20,11 @@ add_subdirectory("dense")
 # If compilation is requried
 if(STARPU)
     add_library(backends_starpu OBJECT ${SRC})
+    target_include_directories(backends_starpu
+        PUBLIC
+            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>
+    )
 endif()
 
 # Put doxygen input to parent scope

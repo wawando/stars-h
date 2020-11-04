@@ -27,8 +27,22 @@ add_subdirectory("backends")
 # Put all doxygen inputs back to parent
 set(DOXYGEN_INPUT ${DOXYGEN_INPUT} ${STARSH_SRC} PARENT_SCOPE)
 
+foreach(BACKEND_OBJECT ${BACKEND_OBJECTS})
+  target_include_directories(${BACKEND_OBJECT}
+      PUBLIC
+          $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+          $<INSTALL_INTERFACE:include>
+  )
+endforeach()
+
 # Define STARS-H library
 add_library(starsh STATIC ${STARSH_SRC} ${BACKENDS_OBJECTS})
+
+target_include_directories(starsh
+    PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
 
 # Add compile and link flags for STARS-H
 if(OPENMP)

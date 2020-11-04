@@ -17,6 +17,11 @@ add_subdirectory("blrm")
 # Compilation of OpenMP is always required
 add_library(backends_openmp OBJECT ${SRC})
 target_compile_options(backends_openmp PUBLIC "${OpenMP_C_FLAGS}")
+target_include_directories(backends_openmp
+    PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
 
 # Put doxygen input to parent scope
 set(DOXYGEN_INPUT ${DOXYGEN_INPUT} ${SRC} PARENT_SCOPE)

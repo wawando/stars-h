@@ -19,6 +19,11 @@ if(MPI AND STARPU)
     add_library(backends_mpi_starpu OBJECT ${SRC})
     set_target_properties(backends_mpi_starpu PROPERTIES COMPILE_FLAGS
         "${MPI_C_COMPILE_FLAGS}")
+    target_include_directories(backends_mpi_starpu
+        PUBLIC
+            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>
+    )
 endif()
 
 # Put doxygen input to parent scope

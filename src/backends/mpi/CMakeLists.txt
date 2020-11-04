@@ -22,6 +22,11 @@ if(MPI)
     if(OPENMP)
         target_compile_options(backends_mpi PUBLIC "${OpenMP_C_FLAGS}")
     endif(OPENMP)
+    target_include_directories(backends_mpi
+        PUBLIC
+            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>
+    )
 endif()
 
 # Put doxygen input to parent scope
