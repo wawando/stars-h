@@ -31,7 +31,7 @@ set(DOXYGEN_INPUT ${DOXYGEN_INPUT} ${STARSH_SRC} PARENT_SCOPE)
 add_library(starsh STATIC ${STARSH_SRC} ${BACKENDS_OBJECTS})
 
 # Install STARS-H library
-install(TARGETS starsh DESTINATION ${LIBDIR})
+install(TARGETS starsh EXPORT starshTargets DESTINATION lib)
 
 # Add compile and link flags for STARS-H
 if(OPENMP)
@@ -48,3 +48,4 @@ if(MPI)
     set_target_properties(starsh PROPERTIES LINK_FLAGS "${MPI_C_LINK_FLAGS}")
     target_link_libraries(starsh PUBLIC ${MPI_C_LIBRARIES})
 endif(MPI)
+

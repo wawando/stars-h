@@ -359,3 +359,31 @@ if(NOT DOCS STREQUAL "OFF")
     add_subdirectory("docs")
 endif()
 
+
+###############################################################################
+##                       Install instruction                                 ##
+###############################################################################
+
+# Create version file for cmake package
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+  starshConfigVersion.cmake
+  VERSION ${PACKAGE_VERSION}
+  COMPATIBILITY SameMajorVersion
+)
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/starshConfigVersion.cmake"
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/starsh
+)
+# Create config file of starsh
+# No public dependencies so a Config file with the targets is enough
+install(EXPORT starshTargets
+  FILE starshConfig.cmake
+  NAMESPACE starsh::
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/starsh
+)
+# Copy headers to install directory
+install(
+    DIRECTORY ${CMAKE_SOURCE_DIR}/include
+    DESTINATION include/starsh
+)
