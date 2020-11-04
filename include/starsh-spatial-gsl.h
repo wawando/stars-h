@@ -14,6 +14,10 @@
 #ifndef __STARSH_SPATIAL_GSL_H__
 #define __STARSH_SPATIAL_GSL_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Check if this is enabled in Doxygen
 //! @cond GSL
 
@@ -97,5 +101,9 @@ void starsh_ssdata_block_parsimonious2_kernel_2d_simd(int nrows, int ncols,
 
 //! @endcond
 // End of condition
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_SPATIAL_GSL_H__

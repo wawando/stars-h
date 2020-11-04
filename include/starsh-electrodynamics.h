@@ -31,6 +31,10 @@
 #include "starsh.h"
 #include "starsh-particles.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct starsh_eddata
 //! Structure for electrodynamics problems.
 /*! @ingroup app-electrodynamics
@@ -174,6 +178,10 @@ void starsh_eddata_block_cos_kernel_4d_simd(int nrows, int ncols,
 void starsh_eddata_block_cos_kernel_nd_simd(int nrows, int ncols,
         STARSH_int *irow, STARSH_int *icol, void *row_data, void *col_data,
         void *result, int ld);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_ELECTRODYNAMICS_H__
 

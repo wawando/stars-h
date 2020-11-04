@@ -123,7 +123,15 @@
     }\
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int cmp_size_t(const void *a, const void *b);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __COMMON_H__
 

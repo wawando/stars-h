@@ -14,6 +14,10 @@
 #ifndef __STARSH_PARTICLES_H__
 #define __STARSH_PARTICLES_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*! @defgroup app-particles N-body
  * @brief Template for particle-to-particle interactions.
  *
@@ -125,6 +129,10 @@ int starsh_particles_write_to_file_pointer_binary(const STARSH_particles *data,
         FILE *fp);
 
 int starsh_particles_zsort_inplace(STARSH_particles *data);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_PARTICLES_H__
 

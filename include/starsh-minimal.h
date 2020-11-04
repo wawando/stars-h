@@ -25,6 +25,10 @@
 // Add definitions for size_t, va_list and STARSH_kernel
 #include "starsh.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct starsh_mindata
 //! Structure for minimal example.
 /*! Main difference of this structure against others is that it does not
@@ -61,5 +65,9 @@ int starsh_mindata_get_kernel(STARSH_kernel **kernel, STARSH_mindata *data,
 void starsh_mindata_block_kernel(int nrows, int ncols, STARSH_int *irow,
         STARSH_int *icol, void *row_data, void *col_data, void *result,
         int ld);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_MINIMAL_H__

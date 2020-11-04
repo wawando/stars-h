@@ -13,6 +13,10 @@
 #ifndef __STARSH_CONSTANTS_H__
 #define __STARSH_CONSTANTS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! Enum for backend types
 enum STARSH_BACKEND
 {
@@ -119,5 +123,9 @@ enum STARSH_FILE_TYPE
     STARSH_BINARY = 2
     //!< Binary file
 };
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_CONSTANTS_H__

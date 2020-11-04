@@ -13,6 +13,10 @@
 #ifndef __STARSH_STARPU_H__
 #define __STARSH_STARPU_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                            APPROXIMATIONS                                 //
@@ -60,6 +64,10 @@ void starsh_dense_fake_init_starpu(void *buffers[], void *cl_arg);
 
 //! @endcond
 // End of condition
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_STARPU_H__
 

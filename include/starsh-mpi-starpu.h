@@ -13,6 +13,10 @@
 #ifndef __STARSH_MPI_STARPU_H__
 #define __STARSH_MPI_STARPU_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                            APPROXIMATIONS                                 //
@@ -58,6 +62,10 @@ int starsh_blrm__dqp3_mpi_starpu(STARSH_blrm **matrix, STARSH_blrf *format,
 
 //! @endcond
 // End of condition
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_MPI_STARPU_H__
 

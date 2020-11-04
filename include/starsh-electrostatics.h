@@ -31,8 +31,12 @@
 #include "starsh.h"
 #include "starsh-particles.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! Electrostatics problem reuses structure for particles
-typedef STARSH_particles STARSH_esdata; 
+typedef STARSH_particles STARSH_esdata;
 
 enum STARSH_ELECTROSTATICS_KERNEL
 //! List of built-in kernels for starsh_esdata_get_kernel().
@@ -116,6 +120,10 @@ void starsh_esdata_block_coulomb_potential_kernel_4d_simd(int nrows, int ncols,
 void starsh_esdata_block_coulomb_potential_kernel_nd_simd(int nrows, int ncols,
         STARSH_int *irow, STARSH_int *icol, void *row_data, void *col_data,
         void *result, int ld);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_ELECTROSTATICS_H__
 

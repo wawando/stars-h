@@ -28,6 +28,10 @@
 // Add definitions for size_t, va_list and STARSH_kernel
 #include "starsh.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct starsh_randtlr
 //! Structure for synthetic TLR matrices.
 /*! @ingroup app-randtlr
@@ -94,5 +98,9 @@ void starsh_randtlr_free(STARSH_randtlr *data);
 void starsh_randtlr_block_kernel(int nrows, int ncols, STARSH_int *irow,
         STARSH_int *icol, void *row_data, void *col_data, void *result,
         int ld);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_RANDTLR_H__

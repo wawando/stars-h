@@ -22,6 +22,10 @@
 // Add definitions for enumerated constants.
 #include "starsh-constants.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                ENVIRONMENT                                //
@@ -673,6 +677,10 @@ int starsh_itersolvers__dcg_omp(STARSH_blrm *matrix, int nrhs, double *B,
 
 //! @}
 // End of group
+
+#ifdef __cplusplus
+}
+#endif
 
 
 ///////////////////////////////////////////////////////////////////////////////

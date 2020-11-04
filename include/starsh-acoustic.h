@@ -26,6 +26,10 @@
 #include "starsh.h"
 #include "starsh-particles.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct starsh_acdata
 //! Structure for mesh deformation problems.
 {
@@ -46,12 +50,16 @@ int starsh_generate_3d_acoustic_coordinates(STARSH_acdata **data, STARSH_int mes
                                              int ndim, int train, int nipp, int mordering, char* file_name, char* file_name_interpl);
 void starsh_generate_acoustic_rhs(int nip, int ntrain, double _Complex *crhs, int m, int n, int local_nt, int nb);
 void starsh_generate_acoustic_near_sca(double _Complex *rhs, int nip, int ntrian);
- 
+
 
 // C wrapper for Fortran
 void generate_mesh_points_serials(int *nip, int *ntrain, char* file_name, int* filelength1, char* file_name_interpl, int* filelength2);
 void acoustic_generate_kernel(int *nip, int *ntrian, double _Complex *zz, int *q, int *p, int *local_nt, int *nb);
 void acoustic_generate_rhs(int *nip, int *ntrain, double _Complex *crhs, int *m, int *n, int *local_nt, int *nb);
 void acoustic_generate_near_sca(double _Complex *rhs, int *nip, int *ntrian);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_ACOUSTIC_H__

@@ -13,6 +13,10 @@
 #ifndef __STARSH_MPI_H__
 #define __STARSH_MPI_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                H-FORMAT                                   //
@@ -130,6 +134,10 @@ int starsh_itersolvers__dcg_mpi(STARSH_blrm *matrix, int nrhs, double *B,
 
 //! @endcond
 // End of condition
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_MPI_H__
 

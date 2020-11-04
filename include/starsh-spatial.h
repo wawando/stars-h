@@ -32,6 +32,10 @@
 #include "starsh.h"
 #include "starsh-particles.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct starsh_ssdata
 //! Structure for Spatial Statistics problems.
 /*! @ingroup app-spatial
@@ -274,5 +278,9 @@ void starsh_ssdata_block_parsimonious2_kernel_2d_simd_gcd(int nrows, int ncols,
 // Add definitions for other kernels after Doxygen groups have already been
 // defined
 #include "starsh-spatial-gsl.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_SPATIAL_H__

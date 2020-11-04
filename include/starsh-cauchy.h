@@ -26,6 +26,10 @@
 // Add definitions for STARSH_particles.
 #include "starsh-particles.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! Cauchy problem reuses structure for particles.
 //! @ingroup app-cauchy
 typedef STARSH_particles STARSH_cauchy;
@@ -73,5 +77,9 @@ int starsh_cauchy_get_kernel(STARSH_kernel **kernel, STARSH_cauchy *data,
 void starsh_cauchy_block_kernel(int nrows, int ncols, STARSH_int *irow,
         STARSH_int *icol, void *row_data, void *col_data, void *result,
         int ld);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __STARSH_CAUCHY_H__
