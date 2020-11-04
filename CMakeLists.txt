@@ -382,8 +382,3 @@ install(EXPORT starshTargets
   NAMESPACE starsh::
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/starsh
 )
-# Copy headers to install directory
-install(
-    DIRECTORY ${CMAKE_SOURCE_DIR}/include
-    DESTINATION include/starsh
-)
