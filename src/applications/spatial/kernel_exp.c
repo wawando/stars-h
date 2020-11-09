@@ -80,33 +80,48 @@ void starsh_ssdata_block_exp_kernel_@NDIMd(int nrows, int ncols,
     double *x1[ndim], *x2[ndim];
     x1[0] = data1->particles.point;
     x2[0] = data2->particles.point;
-    //#pragma omp simd
-    for(i = 1; i < ndim; i++)
-    {
-        x1[i] = x1[0]+i*count1;
-        x2[i] = x2[0]+i*count2;
+    
+    for(i = 1; i < ndim; i++) {
+      x1[i] = x1[0]+i*count1;
+      x2[i] = x2[0]+i*count2;
     }
     double *x1_cur, *x2_cur;
     double *buffer = result;
-    // Fill column-major matrix
+    // Fill row-major matrix
     //#pragma omp simd
-    for(j = 0; j < ncols; j++)
-    {
-        for(i = 0; i < nrows; i++)
-        {
-            dist = 0.0;
-            for(k = 0; k < ndim; k++)
-            {
-                tmp = x1[k][irow[i]]-x2[k][icol[j]];
-                dist += tmp*tmp;
-            }
-            dist = sqrt(dist)/beta;
-            if(dist == 0)
-                buffer[j*(size_t)ld+i] = sigma+noise;
-            else
-                buffer[j*(size_t)ld+i] = sigma*exp(dist);
+    for(i = 0; i < nrows; i++) {
+      for(j = 0; j < ncols; j++) {
+        dist = 0.0;
+        for(k = 0; k < ndim; k++) {
+          tmp = x1[k][irow[i]]-x2[k][icol[j]];
+          dist += tmp*tmp;
         }
+        dist = sqrt(dist)/beta;
+        if(dist == 0)
+          buffer[i*(size_t)ld + j] = sigma+noise;
+        else
+          buffer[i*(size_t)ld + j] = sigma*exp(dist);
+      }
     }
+
+    
+    /* for(j = 0; j < ncols; j++) */
+    /* { */
+    /*     for(i = 0; i < nrows; i++) */
+    /*     { */
+    /*         dist = 0.0; */
+    /*         for(k = 0; k < ndim; k++) */
+    /*         { */
+    /*             tmp = x1[k][irow[i]]-x2[k][icol[j]]; */
+    /*             dist += tmp*tmp; */
+    /*         } */
+    /*         dist = sqrt(dist)/beta; */
+    /*         if(dist == 0) */
+    /*             buffer[j*(size_t)ld+i] = sigma+noise; */
+    /*         else */
+    /*             buffer[j*(size_t)ld+i] = sigma*exp(dist); */
+    /*     } */
+    /* } */
 }
 
 void starsh_ssdata_block_exp_kernel_@NDIMd_simd(int nrows, int ncols,
